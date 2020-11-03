@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本</title>
+    <link rel="stylesheet" href="notebook.css">
+</head>
+<body>
+    <div class="notebook" id="notebook">
+        <p class="title">小威记事本</p>
+        <div class="content">
+            <input type="text" placeholder="请输入内容（按回车键确认）" v-model="task" v-on:keydown.13="addTask">
+            <ul>
+                <li v-for="(item,index) in tasks">
+                    <span class="num">{{index + 1}}.</span>
+                    <span>{{item}}</span>
+                    <span class="del" @click="delTask(index)"></span>
+                </li>
+                <li v-if="tasks.length" class="text">
+                    <span class="total">{{tasks.length}}个任务</span>
+                    <a href="#" class="clear" @click="clearTask">清空所有</a>
+                </li>
+            </ul>
+            <span></span>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script src="./js/jquery-3.5.1.js"></script>
+<script>
+    $(function () {
+        $("li").hover(function () {
+            $(this).children(".del").show();
+        },function () {
+            $(this).children(".del").hide();
+        });
+    });
+    new Vue({
+        el:"#notebook",
+        data:{
+            task:"",
+            tasks:[]
+        },
+        methods:{
+            addTask:function(){
+                this.tasks.push(this.task);
+                this.task = "";
+            },
+            clearTask:function(){
+                this.tasks = [];
+                //或者this.tasks.splice(0);
+            },
+            delTask:function (index) {
+                this.tasks.splice(index,1);
+            }
+        }
+    });
+</script>
+</html>

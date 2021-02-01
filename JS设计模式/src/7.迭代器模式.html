@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>7</title>
+</head>
+<body>
+<div id="div1">
+  <a href="#">a1</a>
+  <a href="#">a2</a>
+  <a href="#">a3</a>
+  <a href="#">a4</a>
+  <a href="#">a5</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script>
+  let arr = [1,2,3];
+  let nodeList = document.getElementsByTagName('a');
+  let $a = $('a');
+
+  //迭代器模式：顺序遍历有序集合。使用者不必知道集合的内部结构
+  //统一的遍历方法
+  function each(data) {
+    let $data = $(data); // 生成迭代器
+    $data.each(function (key,value) {
+      console.log(key,value);
+    })
+  }
+  each(arr);
+  each(nodeList);
+  each($a);
+
+  // arr.forEach(item => {
+  //   console.log(item);
+  // })
+  //
+  // for (let i = 0; i < nodeList.length; i++) {
+  //   console.log(nodeList[i]);
+  // }
+  //
+  // $a.each(function (key,elem) {
+  //   console.log(key,elem);
+  // })
+
+</script>
+</body>
+</html>

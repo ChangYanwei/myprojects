@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历一个文件夹中的所有图片</title>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    let div = document.querySelector("div");
+    for (let i = 0;i < 25;i++){
+        let img = document.createElement("img");
+        img.height = 200;
+        img.width = 200;
+        img.src = './images/img' + (i+1) + ".jpg";
+        div.appendChild(img);
+    }
+</script>
+</html>

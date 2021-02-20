@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(210,113,107);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.monster{
+    width: 110px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: rgb(216,120,79);
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    position: relative;
+    animation: jumping 0.8s infinite alternate;
+}
+
+.monster .eye{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.monster .eye .eyeBall{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #0C4475;
+    animation: eyemove 1.6s infinite alternate;
+}
+
+.monster .mouth{
+    width: 32%;
+    height: 12px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.monster::before,
+.monster::after{
+    content: "";
+    display: block;
+    width: 20%;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+}
+
+.monster::before{
+     transform: translateX(-70%) rotate(45deg);
+}
+
+.monster::after{
+    transform: translateX(-30%) rotate(-45deg);
+}
+
+.blue{
+    background-color: #0C4475;
+    animation-delay: 0.5s;;
+}
+
+.blue .eye .eyeBall,
+.blue .mouth{
+    background-color: rgb(216,120,79);
+}
+
+@keyframes jumping {
+    50%{
+        top: 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    100%{
+        top: -50px;
+        box-shadow: 0 60px 20px rgba(0,0,0,0.3);
+    }
+}
+
+@keyframes eyemove {
+    0%,10%{
+        transform: translate(50%);
+    }
+
+    90%,100%{
+        transform: translate(-50%);
+    }
+}
+
+.pageLoading{
+    width: 100%;
+    height: 100%;
+    background-color: #0C4475;
+    position: fixed;
+    /*相对于窗口*/
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s;
+}
+
+.pageLoading .loading{
+    width: 200px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.pageLoading .loading .bar{
+    width: 0%;
+    height: 100%;
+    background-color: rgb(216,120,79);
+}
+
+.complete{
+    opacity: 0;
+}
+
+.complete .monster{
+    transition: 0.5s;
+    transform: scale(0.1) rotateZ(360deg);
+}

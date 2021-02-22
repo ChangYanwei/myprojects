@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testQueue</title>
+</head>
+<body>
+
+</body>
+<!--<script src="./queue-es5.js"></script>-->
+<script src="./queue-es6.js"></script>
+<!--<script src="./PriorityQueue-es5.js"></script>-->
+<script src="./PriorityQueue-es6.js"></script>
+<script>
+  let queue = new Queue();
+  queue.enqueue(1);
+  queue.enqueue('a');
+  queue.enqueue('b');
+
+  console.log(queue.dequeue());
+  console.log(queue.front());
+  console.log(queue.isEmpty());
+  console.log(queue.size());
+
+  console.log(queue.toString());
+
+  console.log('-------------------------------');
+
+  // 队列的应用
+  // 使用队列实现小游戏：击鼓传花，传入一组数据和设定的数字num，循环遍历数组内元素，
+  // 遍历到的次数为指定数字num时将该元素删除，然后重新开始遍历，直至数组剩下一个元素。
+  function passGame(numList, num) {
+    let queue = new Queue();
+    for (let item of numList) {
+      queue.enqueue(item);
+    }
+
+    while(queue.size() > 1) {
+      for (let i = 0; i < num - 1; i++) {
+        queue.enqueue(queue.dequeue());
+      }
+      let del = queue.dequeue();
+      console.log(`${del}被删除`);
+    }
+
+    console.log(queue.size());
+    console.log('最后一个元素是',queue.front());
+  }
+  passGame(['a','b','c','d','e','f'],4);
+
+  console.log('---------------优先级队列----------------');
+  let priorityQueue = new PriorityQueue();
+  priorityQueue.enqueue('a',4);
+  priorityQueue.enqueue('b',1);
+  priorityQueue.enqueue('c',3);
+  priorityQueue.enqueue('d',2);
+  priorityQueue.enqueue('e',3);
+
+  // console.log(priorityQueue.dequeue());
+  console.log(priorityQueue);
+  console.log(priorityQueue.toString());
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+<body>
+
+</body>
+<!--<script src="CircularLinkedList-es5.js"></script>-->
+<script src="CircularLinkedList-es6.js"></script>
+<script>
+  let linkedList = new CircularLinkedList();
+  linkedList.append('a');
+  linkedList.append('b');
+  linkedList.append('c');
+  linkedList.append('d');
+
+  // console.log(linkedList.removeAt(3));
+  // console.log(linkedList.insert(2,'e'));
+  //
+  // console.log(linkedList.toString());
+  // console.log(linkedList.indexOf('c'));
+  // console.log(linkedList.get(2));
+  console.log(linkedList.update(1,'g'));
+  console.log(linkedList.toString());
+  console.log(linkedList);
+
+</script>
+</html>

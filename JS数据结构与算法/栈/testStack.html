@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testStack</title>
+</head>
+<body>
+
+</body>
+<!--<script src="./stack-es5.js"></script>-->
+<script src="./stack-es6.js"></script>
+<script>
+  let stack = new Stack();
+  stack.push(1);
+  stack.push(2);
+  stack.push('a');
+
+  console.log(stack.pop());
+  console.log(stack.isEmpty());
+  console.log(stack.size());
+
+  console.log(stack.toString());
+
+  // 栈结构的简单应用：
+  // 利用栈结构的特点封装十进至转换为二进至的函数：
+  function convert(num) {
+    let stack = new Stack();
+    while(num > 0) {
+      stack.push(num % 2);
+      num = Math.floor(num / 2);
+    }
+
+    let binaryString = '';
+    // let length = stack.size();
+    // for (let i = 0; i < length; i++) {
+    //   binaryString += stack.pop();
+    // }
+    while (!stack.isEmpty()) {
+      binaryString += stack.pop();
+    }
+    return binaryString;
+  }
+
+  console.log(convert(23));
+
+  // 将十进制转成任意进制
+  function baseConvert(decNum, base) {
+    let stack = new Stack();
+    let digits = '0123456789ABCDEF';
+    while (decNum > 0) {
+      stack.push(decNum % base);
+      decNum = Math.floor(decNum / base);
+    }
+
+    let baseStr = '';
+    while(!stack.isEmpty()) {
+      baseStr += digits[stack.pop()]; // 如果是10，那么取出A存进去；如果是11，取出B存进去...
+    }
+    return baseStr;
+  }
+
+  console.log(baseConvert(4267,8));
+  console.log(baseConvert(4267,16));
+</script>
+</html>

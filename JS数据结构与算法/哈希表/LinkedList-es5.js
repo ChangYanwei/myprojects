@@ -84,7 +84,7 @@ LinkedList.prototype.indexOf = function (element) {
   let current = this.head;
   let index = 0;
   while (current) {
-    if (current.element === element) {
+    if (JSON.stringify(current.element) === JSON.stringify(element)) {
       return index;
     }
     current = current.next;
@@ -144,3 +144,5 @@ LinkedList.prototype.toString = function () {
   }
   return result;
 }
+
+export {LinkedList}

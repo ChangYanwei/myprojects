@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testHash-线性探测</title>
+</head>
+<body>
+
+</body>
+<script src="HashTable3.js"></script>
+<script>
+  let hashTable = new HashTable();
+  hashTable.put('a',1);
+  hashTable.put('b',{name:'webchang'});
+  hashTable.put('c',[1,2,3]);
+  hashTable.put('aa','hello');
+  hashTable.put('a','2');
+  // console.log(hashTable.get('a'));
+  // console.log(hashTable.get('aaa'));
+  // console.log(hashTable.remove('b'));
+  // console.log(hashTable.remove('bb'));
+  // reSize方法不是我们主动调用的，是在执行put和delete方法时候，根据情况自动调用的。此时只是一个测试
+  // hashTable.reSize(13);
+
+  console.log(hashTable);
+</script>
+</html>

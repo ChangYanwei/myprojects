@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试集合</title>
+</head>
+<body>
+
+</body>
+<script src="set-es5.js"></script>
+<script>
+  let set = new Set();
+  set.add('a');
+  set.add('b');
+  set.add('c');
+  set.add('d');
+  console.log(set.has('a'));
+  // console.log(set.delete('b'));
+  console.log(set.size());
+  console.log(set.values());
+
+  console.log(set);
+
+  let set2 = new Set();
+  set2.add('c');
+  set2.add('d');
+  set2.add('e');
+  set2.add('f');
+
+  console.log(set.union(set2));
+  console.log(set.intersection(set2));
+  console.log(set.difference(set2));
+  console.log(set.subSet(set2));
+
+</script>
+</html>

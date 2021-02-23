@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>树</title>
+</head>
+<body>
+
+</body>
+<script src="BinarySearchTree.js"></script>
+<script>
+let binarySearchTree = new BinarySearchTree();
+binarySearchTree.insert(9);
+binarySearchTree.insert(5);
+binarySearchTree.insert(12);
+binarySearchTree.insert(11);
+binarySearchTree.insert(15);
+binarySearchTree.insert(3);
+binarySearchTree.insert(8);
+
+let str = "";
+binarySearchTree.preOrder(function (key) {
+  str += key + " ";
+})
+console.log(str);
+console.log('最小值：',binarySearchTree.min());
+console.log('最大值：',binarySearchTree.max());
+console.log('12是否存在',binarySearchTree.search(12));
+console.log('33是否存在',binarySearchTree.search(33));
+
+console.log(binarySearchTree);
+</script>
+</html>

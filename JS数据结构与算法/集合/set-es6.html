@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>es6中的集合</title>
+</head>
+<body>
+
+</body>
+<script>
+  let a = new Set([1, 2, 3]);
+  let b = new Set([4, 3, 2]);
+  // 并集
+  let union = new Set([...a, ...b]);
+
+  // 交集
+  let intersect = new Set([...a].filter(item => b.has(item)));
+
+  // 差集
+  let difference = new Set([...a].filter(item => !b.has(item)));
+</script>
+</html>

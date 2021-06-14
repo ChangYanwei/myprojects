@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <title>地图实验</title>
+</head>
+<body>
+<div id="demo"></div>
+<button onclick="getLocation()">点击获取地理经纬度</button>
+</body>
+<script>
+
+  let x = document.getElementById("demo");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      let geolocation = navigator.geolocation;
+      geolocation.getCurrentPosition(showPosition);
+
+      let watchID = geolocation.watchPosition(showPosition);
+    } else {
+      x.innerHTML = "该浏览器不支持获取地理位置。";
+    }
+  }
+
+  function showPosition(position) {
+    console.log(position);
+    x.innerHTML = "纬度: " + position.coords.latitude +
+        "<br>经度: " + position.coords.longitude;
+  }
+</script>
+</html>

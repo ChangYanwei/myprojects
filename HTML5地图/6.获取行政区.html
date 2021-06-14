@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>6.获取行政区</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    #container {
+      width: 80%;
+      height: 80%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h3 id="city"></h3>
+<div>
+  <input type="text" id="cityInput">
+  <button onclick="setCity()">设置城市</button>
+</div>
+<div id="container"></div>
+
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=ceada0db480b36c21a459d7281769990"></script>
+<script>
+  var map = new AMap.Map('container');
+
+  // 获取当前位置的行政区
+  map.getCity(function (info) {
+    console.log(info);
+  });
+
+  map.on('moveend', function () {
+    // console.log(map.getZoom());
+    // console.log(map.getCenter().toString());
+    map.getCity(function (info) {
+      console.log(info);
+      city.innerText = `${info.province}，${info.district}`
+    })
+  });
+
+  function setCity() {
+    map.setCity(cityInput.value)
+  }
+
+  map.on('zoomend', function () {
+    console.log(map.getZoom());
+    console.log(map.getCenter().toString());
+  })
+</script>
+</body>
+</html>

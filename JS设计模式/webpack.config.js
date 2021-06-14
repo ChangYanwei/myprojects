@@ -9,7 +9,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: '22.单击300ms延迟问题.html'
     })
   ],
   devServer: {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>5</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    #container {
+      width: 100%;
+      height: 80%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <input type="number" placeholder="缩放层级" id="level">
+  <input type="number" id="latitude" placeholder="纬度">
+  <input type="number" id="longitude" placeholder="经度">
+  <button onclick="setMap()">确定</button>
+</div>
+<div id="container"></div>
+
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=ceada0db480b36c21a459d7281769990"></script>
+<script>
+  var map = new AMap.Map('container');
+
+  function setMap() {
+    let latitude = document.getElementById('latitude');
+    let longitude = document.getElementById('longitude');
+    let level = document.getElementById('level');
+    map.setZoomAndCenter(level.value,[latitude.value, longitude.value])
+  }
+
+  // 获取当前的缩放级别和经纬度信息
+  console.log(map.getZoom());
+  console.log(map.getCenter().toString());
+
+  // 在地图上滑动结束后获取当前的缩放级别和经纬度信息
+  map.on('moveend', function () {
+    console.log(map.getZoom());
+    console.log(map.getCenter().toString());
+  })
+
+  // 在地图上缩放结束后获取当前的缩放级别和经纬度信息
+  map.on('zoomend', function () {
+    console.log(map.getZoom());
+    console.log(map.getCenter().toString());
+  })
+</script>
+</body>
+</html>
